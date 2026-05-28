@@ -18,12 +18,12 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.2,
       "position": [
-        -208,
-        256
+        -1728,
+        304
       ],
-      "id": "f7a656ec-83fc-4ed2-a089-57a9def662b7",
+      "id": "ffa52441-94dc-463c-93b3-c938b1e606f1",
       "name": "Upload your file here",
-      "webhookId": "82848bc4-5ea2-4e5a-8bb6-3c09b94a8c5d"
+      "webhookId": "47f6a52d-572c-40b1-8e7f-3ad2f7a57a2c"
     },
     {
       "parameters": {
@@ -33,10 +33,10 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        0,
-        464
+        -1520,
+        512
       ],
-      "id": "94aecac0-03f9-4915-932b-d14a2576607b",
+      "id": "b94e6fb2-0329-4bdd-beeb-7d4ac0fa7438",
       "name": "Default Data Loader"
     },
     {
@@ -52,10 +52,10 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
       "typeVersion": 1.2,
       "position": [
-        -32,
-        272
+        -1552,
+        320
       ],
-      "id": "bf50a11f-ca6a-4e04-a6d2-42fee272b260",
+      "id": "5a8997a4-62c7-4358-87e2-cd4a7af1ee39",
       "name": "Insert Data to Store"
     },
     {
@@ -73,47 +73,38 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
       "typeVersion": 1.2,
       "position": [
-        1120,
-        384
+        -416,
+        352
       ],
-      "id": "09c0db62-5413-440e-8c13-fb6bb66d9b6a",
+      "id": "0a3383fe-761b-4764-a468-e3161f99cdc3",
       "name": "Query Data Tool"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "text": "={{ $json.cleanedMessage }} ",
-        "options": {
-          "systemMessage": "You are a professional Resturant reservation Agent, You Indentify as \"Betty\" not just an AI. You hanlde enquiries, bookings, answer FAQ, and relevance assitanc. If an Operation will take some time, please inform the client to wait. You can not handle refunds. You are aware of the menu, offers, dishes, rest rooms, opening hours and more for CustomCX hotel. Use *\"store-memory\" tool to store the user input/feedback. Map the right details to the right column/row you. Call the \"Get-memory\" tool to retrieve past interactions before responding. both the \"store-memory\" and \"get-memory\" are supabase tools use them efficiently store the leads. \n#rule1: You must always call the \"store-memory\" tool to save any customer insight.\n\nWhat to store in memory?\nwhat the user is looking for.\ntheir objective, challenge, clarity,\nwhat dish,menu, or service they are intrested in. \nKey insights about their needs.\n\n#Rule2: Before generating any response always retrieve relevant memories from  \"get-memory\" inorder to stay relevant and Personalized.\n\nUse \"Send-email\" tool to send Verification details, Menu, Clarification and follow up. Verify the customers email before sending them an email. You should download the Menu from the Google drive \"Download-Menu\" tool. and attach it as part of the email. The client email and name is usually provided at the begining of the conversation. But you can counter check before sending them an email to be sure it is a valid adress. Please inform them once you have sent the adress. \n\n#Use \"Query Data Tool\" to retrive answers for the general question. Everydetail is provided there. Scan the entire knowledge base before returning the answer. \n\n#CustomCX Contact details are +254768322488 and info@CustomCX. \n\n#Here is General Menu\nChapati/chapo and beans =KES 250\nBeef/nyama and ugali = KES 750/-\nMixed tea and cake =Kes 300/-\nPlatters chiken Platter: (Chicken, soup, Salad, Rice/pilau, Chapati/chapo, 4Suasage) KES 3500/-\nBeef platter: (Beef, soup, Ugali, Veges, Rice/Pilau, Fries, 3 Glasses of juice) KES 4500/-\n\nswimming = 500/- adults 300/- children \nSwimming costume (Swimsuits) available for hire from 300/-\n\n*Priority Use the knowledge base to get more detailed answers or else let the customer visit https://customcx.com/ \n\n"
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 2,
-      "position": [
-        1184,
-        -128
-      ],
-      "id": "579aed76-9644-42d1-ac13-7369059ff1c2",
-      "name": "AI Agent"
     },
     {
       "parameters": {
         "public": true,
         "mode": "webhook",
+        "authentication": "basicAuth",
         "options": {
           "allowedOrigins": "*",
+          "loadPreviousSession": "memory",
           "responseMode": "responseNode"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1.1,
       "position": [
-        -144,
-        -48
+        -1696,
+        -64
       ],
-      "id": "9c30de61-935a-471f-ae88-ec5f67beeefc",
+      "id": "120aadbe-bb99-4a0a-a2a4-7aa1a89d6d35",
       "name": "When chat message received",
-      "webhookId": "4091fa09-fb9a-4039-9411-7104d213f601"
+      "webhookId": "4091fa09-fb9a-4039-9411-7104d213f601",
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "1J4EIda1HwmPT1sv",
+          "name": "Unnamed credential"
+        }
+      }
     },
     {
       "parameters": {
@@ -122,34 +113,15 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsCohere",
       "typeVersion": 1,
       "position": [
-        912,
-        528
+        -608,
+        576
       ],
-      "id": "ada2c538-305c-4388-81fb-694fb4fbc6d5",
+      "id": "5a36e289-4969-4108-8630-4ab1db1914af",
       "name": "Embeddings Cohere",
       "credentials": {
         "cohereApi": {
-          "id": "8vBIpENmZHAIEyhR",
-          "name": "CohereApi account 2"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        1088,
-        48
-      ],
-      "id": "66085fcd-5c53-4f26-a788-c6070dd552b1",
-      "name": "Google Gemini Chat Model",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "poM6Ornhzse7CD7q",
-          "name": "Google Gemini(PaLM) Api account test"
+          "id": "F0tf74C25IXCsnuD",
+          "name": "Cohere account"
         }
       }
     },
@@ -162,10 +134,10 @@
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
       "position": [
-        1248,
-        80
+        -288,
+        112
       ],
-      "id": "aae1bcf5-8f6e-4519-8372-3a5c7e078cca",
+      "id": "85a267cc-7463-473a-8572-8ddcf502ac21",
       "name": "Simple Memory"
     },
     {
@@ -173,21 +145,21 @@
       "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
       "typeVersion": 1,
       "position": [
-        1216,
-        528
+        -304,
+        576
       ],
-      "id": "15af2845-8798-46c3-94c2-317e34ee64dd",
+      "id": "752bd27f-97df-47d9-ba91-1f840745dff2",
       "name": "Reranker Cohere",
       "credentials": {
         "cohereApi": {
-          "id": "py64UlQcHZeNlC9p",
-          "name": "CohereApi account 3"
+          "id": "F0tf74C25IXCsnuD",
+          "name": "Cohere account"
         }
       }
     },
     {
       "parameters": {
-        "tableId": "CustomCX Hotel",
+        "tableId": "customcx_hotel",
         "fieldsUi": {
           "fieldValues": [
             {
@@ -212,14 +184,14 @@
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        1744,
-        160
+        224,
+        144
       ],
-      "id": "e8088d9e-d7e4-43b4-bb17-cc7c3bd2dfc0",
+      "id": "54449385-e56e-44ea-a74c-99fa7f9336de",
       "name": "store-memory",
       "credentials": {
         "supabaseApi": {
-          "id": "PgYRVXLr3BAgRW34",
+          "id": "z7KBe4K92x6Zl2nq",
           "name": "Supabase account"
         }
       }
@@ -227,75 +199,22 @@
     {
       "parameters": {
         "operation": "getAll",
-        "tableId": "CustomCX Hotel",
+        "tableId": "customcx_hotel",
         "returnAll": true,
         "filterType": "none"
       },
       "type": "n8n-nodes-base.supabaseTool",
       "typeVersion": 1,
       "position": [
-        1616,
-        176
+        112,
+        192
       ],
-      "id": "4abbe6a1-f046-45b2-bf22-088cbb329911",
+      "id": "fea9b7e1-a394-4b63-942b-7e423537d3a5",
       "name": "Get-memory",
       "credentials": {
         "supabaseApi": {
-          "id": "PgYRVXLr3BAgRW34",
+          "id": "z7KBe4K92x6Zl2nq",
           "name": "Supabase account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "fromEmail": "info@customcx.com",
-        "toEmail": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To_Email', ``, 'string') }}",
-        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
-        "emailFormat": "text",
-        "text": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Text', ``, 'string') }}",
-        "options": {
-          "appendAttribution": false,
-          "attachments": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Attachments', ``, 'string') }}"
-        }
-      },
-      "type": "n8n-nodes-base.emailSendTool",
-      "typeVersion": 2.1,
-      "position": [
-        1520,
-        240
-      ],
-      "id": "e3daa5c5-9c30-48c1-b718-fe528cae167d",
-      "name": "Send-email",
-      "webhookId": "18949e7d-3ad6-4845-8ba1-b6a95b32c7a0",
-      "credentials": {
-        "smtp": {
-          "id": "aVNkYHrGCmSuOOdm",
-          "name": "SMTP account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "download",
-        "fileId": {
-          "__rl": true,
-          "value": "https://drive.google.com/file/d/1WboEWV7BH8Kykwdh_z1Z8ftO-j9Zjlir/view?usp=drive_link",
-          "mode": "url"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleDriveTool",
-      "typeVersion": 3,
-      "position": [
-        1408,
-        224
-      ],
-      "id": "48f0be42-c89d-4200-a6a1-79a2ddca3731",
-      "name": "Download Menu",
-      "credentials": {
-        "googleDriveOAuth2Api": {
-          "id": "eDpP3P4PjLffHA9W",
-          "name": "Google Drive account 2"
         }
       }
     },
@@ -327,10 +246,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        304,
-        -80
+        -1232,
+        -64
       ],
-      "id": "969cf601-fd6e-4a71-a21b-5a450ebd4644",
+      "id": "605bf4d8-f4b0-40b1-8396-21559305d419",
       "name": "If"
     },
     {
@@ -342,10 +261,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [
-        528,
-        112
+        -992,
+        160
       ],
-      "id": "e540ebee-8a36-43c0-8e38-898c4b566dbe",
+      "id": "62bd6774-e831-4674-be85-11d30d858436",
       "name": "Respond to Webhook1"
     },
     {
@@ -355,10 +274,10 @@
       "type": "n8n-nodes-base.respondToWebhook",
       "typeVersion": 1.4,
       "position": [
-        1552,
-        -112
+        32,
+        -64
       ],
-      "id": "f6b5ce81-b0a3-42f8-8193-c372065115ed",
+      "id": "6f97629a-4f12-461d-81d9-0ddf542b3e3d",
       "name": "Respond to Webhook"
     },
     {
@@ -370,12 +289,6 @@
               "name": "chatInput",
               "value": "={{ $json.chatInput }}",
               "type": "string"
-            },
-            {
-              "id": "fabab0bc-cf16-4c41-b154-966aa921b1d7",
-              "name": "Email",
-              "value": "={{ $json.metadata.userName }}",
-              "type": "string"
             }
           ]
         },
@@ -384,24 +297,98 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        592,
-        -112
+        -848,
+        -80
       ],
-      "id": "7acde89c-4c0f-41b4-b12a-63834e2f39c3",
+      "id": "953f12dc-358c-4653-a569-ef5598723e5c",
       "name": "Edit Fields"
     },
     {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.4,
+      "position": [
+        -1568,
+        128
+      ],
+      "id": "5ce2ab6d-3ab8-46bb-a1a4-b18a41e1d5c5",
+      "name": "Simple Memory1"
+    },
+    {
       "parameters": {
-        "jsCode": "// Check if this is a user registration message\nif ($json.metadata && $json.metadata.isUserInfo) {\n  // For registration messages, pass through without processing\n  return {\n    isRegistration: true,\n    userInfo: {\n      name: $json.metadata?.userName || '',\n      email: $json.metadata?.userId || ''\n    },\n    originalData: $json\n  };\n}\n\n// For regular chat messages\nconst originalData = $('When chat message received').item.json;\nreturn {\n  isRegistration: false,\n  cleanedMessage: $json.chatInput || $json.message || '',\n  userInfo: {\n    name: originalData.metadata?.userName || '',\n    email: originalData.metadata?.userId || ''\n  }\n};"
+        "options": {
+          "systemMessage": "You are Betty, a warm and professional Restaurant Reservation Agent for CustomCX Hotel. You are a real hospitality professional, not a generic AI assistant.\n\nYou handle: table reservations, menu enquiries, swimming pool bookings, FAQs, and general assistance. You cannot process refunds. If something will take a moment, let the customer know.\n\n---\nMENU\n\nMeals:\n- Chapati and beans — KES 250\n- Beef (nyama) and ugali — KES 750\n- Mixed tea and cake — KES 300\n\nPlatters:\n- Chicken Platter: chicken, soup, salad, rice/pilau, chapati, 4 sausages — KES 3,500\n- Beef Platter: beef, soup, ugali, vegetables, rice/pilau, fries, 3 juices — KES 4,500\n\nSwimming:\n- Adults — KES 500\n- Children — KES 300\n- Swimsuit hire — from KES 300\n\n---\nCONTACT & LINKS\n\nPhone: +254 768 322 488\nEmail: info@customcx.com\nWebsite: https://customcx.com/\n\nFor detailed questions you cannot answer confidently, direct customers to the website or contact details above.\n\n---\nHOW TO BEHAVE\n\n- Greet customers warmly by name once they introduce themselves.\n- Keep responses concise and friendly — this is a chat, not an essay.\n- For reservations, collect: name, date, time, number of guests, and any special requests.\n- For swimming, collect: number of adults and children, preferred date and time.\n- If a customer asks for the full menu or detailed information, let them know you can share it and ask for their email address.\n- Always confirm back what you have understood before finalising a booking.\n- Never make up prices, availability, or information not listed above.\n- If you do not know the answer, say so honestly and provide the contact details."
+        }
       },
-      "type": "n8n-nodes-base.code",
+      "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2,
       "position": [
-        800,
-        -112
+        -336,
+        -80
       ],
-      "id": "aa69f711-bcdc-43b1-88ef-6fb9ee901772",
-      "name": "Code"
+      "id": "e2f5f9fc-16c8-4a44-921b-0576a036c95f",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "model": "deepseek-v4-flash",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
+      "typeVersion": 1,
+      "position": [
+        -416,
+        96
+      ],
+      "id": "eac95242-b6de-4ae4-88f4-90cee58e3385",
+      "name": "DeepSeek Chat Model",
+      "credentials": {
+        "deepSeekApi": {
+          "id": "MbUBawBZZYMWCyhK",
+          "name": "DeepSeek account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "https://drive.google.com/file/d/1WboEWV7BH8Kykwdh_z1Z8ftO-j9Zjlir/view?usp=drive_link",
+          "mode": "url"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTool",
+      "typeVersion": 3,
+      "position": [
+        -128,
+        240
+      ],
+      "id": "dcf3658e-b40b-42ad-98a3-5a79a7ed6855",
+      "name": "Download Menu"
+    },
+    {
+      "parameters": {
+        "fromEmail": "info@customcx.com",
+        "toEmail": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('To_Email', ``, 'string') }}",
+        "subject": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Subject', ``, 'string') }}",
+        "emailFormat": "text",
+        "text": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Text', ``, 'string') }}",
+        "options": {
+          "appendAttribution": false,
+          "attachments": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Attachments', ``, 'string') }}"
+        }
+      },
+      "type": "n8n-nodes-base.emailSendTool",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        224
+      ],
+      "id": "17875f78-0898-4672-a409-20d7deca5978",
+      "name": "Send-email",
+      "webhookId": "18949e7d-3ad6-4845-8ba1-b6a95b32c7a0"
     }
   ],
   "connections": {
@@ -438,17 +425,6 @@
         ]
       ]
     },
-    "AI Agent": {
-      "main": [
-        [
-          {
-            "node": "Respond to Webhook",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "When chat message received": {
       "main": [
         [
@@ -471,17 +447,6 @@
           {
             "node": "Query Data Tool",
             "type": "ai_embedding",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Gemini Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -531,28 +496,6 @@
         ]
       ]
     },
-    "Send-email": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Download Menu": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Agent",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "If": {
       "main": [
         [
@@ -575,19 +518,63 @@
       "main": [
         [
           {
-            "node": "Code",
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Code": {
+    "Simple Memory1": {
+      "ai_memory": [
+        [
+          {
+            "node": "When chat message received",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
       "main": [
         [
           {
-            "node": "AI Agent",
+            "node": "Respond to Webhook",
             "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "DeepSeek Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Menu": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send-email": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -596,8 +583,7 @@
   },
   "pinData": {},
   "meta": {
-    "templateId": "rag-starter-template",
     "templateCredsSetupCompleted": true,
-    "instanceId": "8f351f8f18f69574a46094a253f36ef0804528a7fc6d1eee81ee60e356860359"
+    "instanceId": "2237b247c0f0a893dbf1e2b3c8ff535f65ebe28b64e5105d821d35b15519368b"
   }
 }

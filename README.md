@@ -2,6 +2,20 @@
 
 A customizable, lightweight chat widget for integrating n8n workflows into your website. Enable AI-powered conversations directly on your web pages with minimal setup.
 
+## Demo
+
+### Live Demo Video
+[Watch Demo](./resources/authentication.mp4)
+
+### Hello Page / Company Header
+![Hello Page](./resources/hello-page.png)
+
+### Authentication Page
+![Authentication Page](./resources/authpage.png)
+
+### Chat Interface
+![Chat Interface](./resources/chat-interface.png)
+
 ## Features
 
 - **Easy Integration** - Works with vanilla HTML, Vue.js, React, and more
